@@ -7,7 +7,7 @@ const styles = [
   "Retro Flame",
   "Golden Era",
   "Pixel Ball",
-  "Espíritu Local",
+  "Espíritu Local"
 ];
 
 export default function Home() {
@@ -33,4 +33,44 @@ export default function Home() {
         <title>Camisetas Retro con IA</title>
       </Head>
       <h1>Generador de camisetas retro</h1>
-      <p>Selecciona un
+      <p>Selecciona un estilo:</p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+        {styles.map(style => (
+          <button
+            key={style}
+            onClick={() => setSelected(style)}
+            style={{
+              padding: 10,
+              backgroundColor: selected === style ? '#cceeff' : 'white',
+              border: '1px solid #ccc',
+              borderRadius: 5
+            }}
+          >
+            {style}
+          </button>
+        ))}
+      </div>
+
+      <button
+        onClick={generate}
+        style={{
+          marginTop: 20,
+          padding: 10,
+          fontSize: 16,
+          backgroundColor: '#0070f3',
+          color: 'white',
+          border: 'none',
+          borderRadius: 5
+        }}
+      >
+        Generar diseños
+      </button>
+
+      <div style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+        {images.map((url, i) => (
+          <img key={i} src={url} alt={`Diseño ${i}`} width={200} />
+        ))}
+      </div>
+    </div>
+  );
+}
